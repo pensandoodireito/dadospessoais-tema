@@ -1,0 +1,60 @@
+#protecao-dados .apresenta-protecao {
+  background: url("../images/bck-debates-dados-pessoais-02.jpg") repeat top left #034f2a;
+  padding: 40px 20px;
+}
+#protecao-dados .apresenta-protecao:before,
+#protecao-dados .apresenta-protecao:after {
+  content: " ";
+  display: table;
+}
+#protecao-dados .apresenta-protecao:after {
+  clear: both;
+}
+#protecao-dados .apresenta-protecao .assinatura {
+  margin: 20px -20px -40px -20px;
+  padding: 10px 20px 20px 20px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+#protecao-dados .apresenta-protecao .assinatura a,
+#protecao-dados .apresenta-protecao .assinatura a:hover {
+  color: #fff;
+}
+#protecao-dados .apresenta-protecao .assinatura .realizacao {
+  width: 50%;
+  margin: 10px auto;
+}
+#protecao-dados .temas {
+  position: relative;
+  background: url("../images/bck-debates-prot-temas.jpg") no-repeat left top #22466d;
+}
+#protecao-dados .temas .titulo {
+  text-indent: -90000px;
+  background: url("../images/prot-temas.png") no-repeat left bottom;
+  background-size: 100%;
+  width: 100%;
+  height: 320px;
+  margin: 0;
+  padding: 0;
+}
+@media (max-width: 767px) {
+  #protecao-dados .temas .titulo {
+    text-align: center;
+    text-indent: 0;
+    background-image: none;
+    height: auto;
+    width: 100%;
+  }
+}
+#protecao-dados .debates {
+  background: url("../images/bck-debates-prot-debates.jpg") no-repeat left top #e5c36f;
+  background-size: 100%;
+  text-align: center;
+}
+#protecao-dados .debates .contexto {
+  border-radius: 5px;
+  box-shadow: 0px 1px 6px 1px rgba(50, 50, 50, 0.31);
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px;
+}
