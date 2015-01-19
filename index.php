@@ -85,6 +85,7 @@
             </div>
         </div>
     </div>
+    
 </div>
 <div class="container mt-md">
     <?php get_template_part('mini-tutorial'); ?>
