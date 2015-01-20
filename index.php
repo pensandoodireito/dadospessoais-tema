@@ -82,7 +82,9 @@
     </div>
     
 </div>
-<div class="container mt-md">
-    <?php get_template_part('mini-tutorial'); ?>
-</div>
+
+<?php get_template_part('mini-tutorial'); ?>
+
+<?php get_template_part('noticias'); ?>
+
 <?php get_footer(); ?>
