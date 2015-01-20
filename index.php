@@ -32,23 +32,18 @@
             <div class="assinatura white">
                 <p class="text-center fontsize-sm">Realização:</p>
                 <div class="clearfix text-center fontsize-sm mt-md">
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <p class="text-center">
                         Secretaria de
                         <br>
                         <strong>Assuntos Legislativos</strong>
                         </p>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <p class="text-center">
                         Secretaria
                         <br>
                         <strong>Nacional do Consumidor</strong>
-                        </p>
-                    </div>
-                    <div class="col-sm-4">
-                        <p class="text-center">
-                        <strong>Participa.br</strong>
                         </p>
                     </div>
                 </div>
