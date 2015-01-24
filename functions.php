@@ -7,6 +7,13 @@ $cores_eixos_editor = '
 
 $cores_eixos_array = array("#F56954",  "#F39C12",  "#0073B7", "#00A65A",  "#932AB6",  "#85144B", "#001F3F", "#3D9970");
 
+
+function dadospessoais_scripts() {
+    wp_enqueue_script( 'dadospessoais', get_stylesheet_directory_uri() . '/js/dadospessoais.js' );
+}
+
+add_action( 'wp_enqueue_scripts', 'dadospessoais_scripts' );
+
 // Registro do Custom Post Type "Texto em Discussão"
 function dados_pessoais_post_types() {
 

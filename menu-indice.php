@@ -1,4 +1,4 @@
-<div class="menu-submenu">
+<div class="menu-submenu indice">
 	<div class="panel panel-submenu">
 		<div class="panel-heading"><h6 class="panel-title">Índice</h6></div>
 		<div class="panel-body vertical">
