@@ -13,7 +13,9 @@
 		</div>
 		<div class="col-md-9">
 			<h4><strong><?php the_title(); ?></strong></h4>
-			<?php the_content(); ?>
+			<div class="commentable-container">
+				<?php the_content(); ?>
+			</div>
 		</div>
 	</div>
 </div>
