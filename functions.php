@@ -187,6 +187,8 @@ add_action('the_content', 'dadospessoais_parse_headers');
 function dadospessoais_parse_headers($content) {
     if(get_post_type() == "texto-em-debate") {
         return preg_replace_callback('/(<h([1-6]{1})([^>]*)>)(.*)<\/h\2>/msuU', 'dadospessoais_parse_head', $content);
+    } else {
+        return $content;
     }
 }
 
