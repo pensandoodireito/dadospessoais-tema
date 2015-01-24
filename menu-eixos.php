@@ -1,6 +1,6 @@
 <div class="menu-submenu" id="menueixos-sticker">
     <div class="panel panel-submenu">
-        <div class="panel-heading"><h6 class="panel-title">Eixos a serem debatidos</h6></div>
+        <div class="panel-heading"><h6 class="panel-title">Eixos em debate</h6></div>
         <div class="panel-body vertical">
             <div class="menu">
                 <ul>
