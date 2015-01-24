@@ -7,7 +7,7 @@
 	<div class="mt-md row">
 		<div class="col-md-3">
 			<?php get_template_part("menu", "indice"); ?>
-			<div class="mt-md">
+			<div class="mt-md" id="fixa-menu-eixo">
 				<?php get_template_part("menu", "eixos"); ?>
 			</div>
 		</div>
@@ -19,3 +19,4 @@
 		</div>
 	</div>
 </div>
+<?php get_template_part('modalteste'); ?>
