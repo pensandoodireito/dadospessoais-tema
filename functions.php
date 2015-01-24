@@ -180,3 +180,95 @@ function dadospessoais_salvar_cor_meta($post_id, $post) {
 }
 
 add_action('save_post', 'dadospessoais_salvar_cor_meta', 1, 2); // save the custom fields
+
+
+add_action('the_content', 'dadospessoais_parse_headers');
+
+function dadospessoais_parse_headers($content) {
+    if(get_post_type() == "texto-em-debate") {
+        return preg_replace_callback('/(<h([1-6]{1})([^>]*)>)(.*)<\/h\2>/msuU', 'dadospessoais_parse_head', $content);
+    }
+}
+
+function dadospessoais_parse_head($matches) {
+
+    return "<h{$matches[2]} {$matches[3]} id='" . dadospessoais_slugfy($matches[4]) . "'>{$matches[4]}</h{$matches[2]}>";
+
+}
+
+/**
+ * Obtem o índice (table of contents) de um conteúdo html passado
+ *
+ * @param $content
+ * @return string
+ */
+function dadospessoais_get_toc($content) {
+    $matches = array();
+
+    $output = "";
+
+    if ( preg_match_all('/(<h([1-6]{1})[^>]*)>(.*)<\/h\2>/msuU', $content, $matches, PREG_SET_ORDER) ) {
+
+        $output .= "<ul>";
+        $level = 1;
+
+        foreach($matches as $match) {
+
+            $item_toc = '<li><a href="#' . dadospessoais_slugfy($match[3]) . '">' . $match[3] . '</a></li>';
+
+            if ($match[2] > $level) {
+
+                for(; $level < $match[2]; $level++) {
+                    $output .= "<li><ul>";
+                    $output .= $item_toc;
+                }
+            } elseif ($match[2] < $level) {
+                for (; $level > $match[2]; $level--){
+                    $output .= "</li></ul>";
+                }
+
+                $output .= $item_toc;
+
+            }
+            else {
+                $output .= $item_toc;
+            }
+        }
+
+        $output .= "</ul>";
+
+    }
+
+    return $output;
+}
+
+/**
+ * Gera slug de um texto aleatório
+ *
+ * @param $text
+ * @return mixed|string
+ */
+function dadospessoais_slugfy($text)
+{
+    // replace non letter or digits by -
+    $text = preg_replace('~[^\\pL\d]+~u', '-', $text);
+
+    // trim
+    $text = trim($text, '-');
+
+    // transliterate
+    $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+    // lowercase
+    $text = strtolower($text);
+
+    // remove unwanted characters
+    $text = preg_replace('~[^-\w]+~', '', $text);
+
+    if (empty($text))
+    {
+        return 'n-a';
+    }
+
+    return $text;
+}
