@@ -9,8 +9,8 @@
         <?php the_content(); ?>
       </div>
       <div class="modal-footer">
-        <a href="<?php the_permalink(); ?>" class="btn btn-primary">Debata esse assunto dentro do eixo</a>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        <a href="<?php the_permalink(); ?>" class="btn btn-default">Debata esse assunto dentro do eixo</a>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Voltar para o texto de lei</button>
       </div>
     </div>
   </div>
