@@ -1,7 +1,6 @@
 <?php
 get_header(); ?>
-<div>teste</div>
-    
+
     <?php
         // Start the Loop.
         while ( have_posts() ) : the_post();
