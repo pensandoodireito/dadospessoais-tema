@@ -55,11 +55,11 @@ $(function ($) {
         '                       </div>\n      ' +
         '                                   </div>\n    ' +
         '                           <% } else { %>\n  ' +
-        '                               <div class="register-login">' +
+        '                               <div class="comment-form"><div class="comment-box register-login">' +
         '                                   <p class="author-name">Você precisa estar logado para comentar.</p>' +
         '                                   <p><a href="<%= dadosPessoais.login_url %>">Faça seu login</a> ou ' +
         '                                   <a href="<%= dadosPessoais.signup_url %>">cadastre-se</a>.</p>' +
-        '                               </div>' +
+        '                               </div></div>' +
         '                           <% } %>' +
         '                   </div>\n' +
         '                       </div>';
