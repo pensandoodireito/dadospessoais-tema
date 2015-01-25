@@ -54,28 +54,44 @@
                 <h3 class="titulo font-amatic white">Temas</h3>
             </div>
             <div class="col-sm-6 col-sm-offset-1 white">
-                <p class="mt-xl"><i class="fa fa-caret-right"></i><strong> <a href="#">O que são dados pessoais?</a></strong>
-                </p>
-                <p><i class="fa fa-caret-right"></i><strong> Por que é importante proteger os dados pessoais?</strong>
-                </p>
-                <p><i class="fa fa-caret-right"></i><strong> Quais são os direitos do cidadão?</strong>
-                </p>
-                <p><i class="fa fa-caret-right"></i><strong> É possível a venda, cruzamento ou compartilhamento dos dados?</strong>
-                </p>
-                <p><i class="fa fa-caret-right"></i><strong> Estes são apenas alguns temas levantados. <a href="#" class="yellow">Conheça todos</a></strong>
-                </p>
+                <p class="mt-xl"></p>
+
+                <?php
+                // Gera os modais de eixos
+                $query_eixos = new WP_Query("post_type=eixo-de-debate");
+
+                if ($query_eixos->have_posts()) {
+                    while ($query_eixos->have_posts()) {
+                        $query_eixos->the_post();
+                        ?>
+                        <p><i class="fa fa-caret-right"></i><strong><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></strong>
+                        </p>
+                    <?php
+                    }
+                }
+
+                wp_reset_query();
+                ?>
+
             </div>
         </div>
         <div class="debates clearfix">
             <div class="col-md-6 col-md-offset-3">
                 <div class="contexto">
-                    <h3 class="font-amatic red h2">Debates</h3>
-                    <p class="mt-md">O debate público, aberto pelo Ministério da Justiça, vai consultar a sociedade civil sobre os termos do anteprojeto de lei sobre o uso de dados pessoais do cidadão brasileiro.</p>
-                    <p class="mt-md"><strong>O debate será feito por meio do site, que ficará disponível para receber contribuições da sociedade por 60 dias.</strong>
-                    </p>
-                    <p class="mt-md">
-                    <button type="button" class="btn btn-danger btn-lg font-roboto">Participe do debate!</button>
-                    </p>
+                    <?php
+
+                    $page_participe = pensando_get_participe_page();
+
+                    if ($page_participe) {
+
+                        ?>
+                        <h3 class="font-amatic red h2"><?php echo $page_participe->post_title; ?></h3>
+                        <p class="mt-md"><?php echo $page_participe->post_excerpt; ?></p>
+                        </p>
+                        <p class="mt-md">
+                            <a href="<?php echo get_permalink($page_participe->ID); ?>" class="btn btn-danger btn-lg font-roboto">Participe do debate!</a>
+                        </p>
+                    <?php } ?>
                 </div>
             </div>
         </div>
