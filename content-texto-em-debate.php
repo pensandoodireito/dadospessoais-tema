@@ -12,10 +12,12 @@
 		</div>
 	</div>
 </div>
+<div class="back-to-top">
+	<a href="#" class="white"><i class="fa fa-level-up"></i> Voltar para o topo</a>
+</div>
 <?php
 // Gera os modais de eixos
 $query_eixos = new WP_Query("post_type=eixo-de-debate");
-
 if ( $query_eixos->have_posts() ) {
 	while ( $query_eixos->have_posts() ) {
 		$query_eixos->the_post();
