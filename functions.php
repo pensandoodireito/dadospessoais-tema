@@ -9,7 +9,7 @@ $cores_eixos_array = array("#F56954",  "#F39C12",  "#0073B7", "#00A65A",  "#932A
 
 
 function dadospessoais_scripts() {
-    wp_enqueue_script( 'dadospessoais', get_stylesheet_directory_uri() . '/js/dadospessoais.js' );
+    wp_enqueue_script( 'dadospessoais', get_stylesheet_directory_uri() . '/js/dadospessoais.js' , array('jquery') );
 }
 
 add_action( 'wp_enqueue_scripts', 'dadospessoais_scripts' );
@@ -201,7 +201,7 @@ function dadospessoais_parse_headers($content) {
 
 function dadospessoais_parse_head($matches) {
 
-    return "<h{$matches[2]} {$matches[3]} id='" . dadospessoais_slugfy($matches[4]) . "'>{$matches[4]}</h{$matches[2]}>";
+    return "<h{$matches[2]} {$matches[3]} id='" . str_replace('--','-', str_replace('8211','', dadospessoais_slugfy($matches[4]))) . "'>{$matches[4]}</h{$matches[2]}>";
 
 }
 
