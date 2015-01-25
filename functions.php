@@ -10,6 +10,12 @@ $cores_eixos_array = array("#F56954",  "#F39C12",  "#0073B7", "#00A65A",  "#932A
 
 function dadospessoais_scripts() {
     wp_enqueue_script( 'dadospessoais', get_stylesheet_directory_uri() . '/js/dadospessoais.js' , array('jquery') );
+
+    $var_plataforma = array();
+    $var_plataforma['signup_url'] = wp_registration_url();
+    $var_plataforma['login_url'] = wp_login_url();
+
+    wp_localize_script( 'dadospessoais', 'dadosPessoais', $var_plataforma );
 }
 
 add_action( 'wp_enqueue_scripts', 'dadospessoais_scripts' );
