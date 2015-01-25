@@ -87,7 +87,6 @@
                         ?>
                         <h3 class="font-amatic red h2"><?php echo $page_participe->post_title; ?></h3>
                         <p class="mt-md"><?php echo $page_participe->post_excerpt; ?></p>
-                        </p>
                         <p class="mt-md">
                             <a href="<?php echo get_permalink($page_participe->ID); ?>" class="btn btn-danger btn-lg font-roboto">Participe do debate!</a>
                         </p>
