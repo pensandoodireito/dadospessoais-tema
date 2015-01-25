@@ -9,8 +9,8 @@ $(function($) {
 
         // animate
         $('html, body').animate({
-            scrollTop: $(hash).offset().top
-        }, 500, function(){
+            scrollTop: $(hash).offset().top - 100
+        }, 300, function(){
 
             // when done, add hash to url
             // (default click behaviour)
