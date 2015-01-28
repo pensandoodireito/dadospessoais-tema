@@ -201,6 +201,10 @@ function dadospessoais_cor_eixo_metabox() {
  * @return mixed
  */
 function dadospessoais_salvar_cor_meta($post_id, $post) {
+    if (!isset($_POST['cormeta_noncename'])) {
+        return $post->ID;
+    }
+
     // Verificação do nonce
     if ( !wp_verify_nonce( $_POST['cormeta_noncename'], plugin_basename(__FILE__) )) {
         return $post->ID;
