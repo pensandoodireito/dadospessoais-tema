@@ -2,22 +2,33 @@
 
 // Variável global dos eixos em discussão
 $cores_eixos_editor = '
-    "F56954", "Vermelho", "F39C12", "Amarelo", "0073B7", "Azul", "00A65A", "Verde", "932AB6", "Roxo", "85144B", "Maroon",   "001F3F", "Azul marinho", "3D9970", "Oliva", "678A00", "Verde Escuro", "52007A", "Violeta", "992781", "Rosa", "998F43", "Bege", "149941", "Verde Vivo"
+    "FF1212", "Vermelho A", "984444", "Vermelho B", "FF7112", "Laranja A", "FFA012",  "Laranja A", "986644", "Laranja B", "FFFF12", "Amarelo A", "987644", "Amarelo B", "988744", "Amarelo C", "B2E710", "Verde A", "0FD00F", "Verde B", "989844", "Verde C", "7C9040", "Verde D", "3C873C", "Verde E", "0F9FD0", "Azul A", "0F5FD0",  "Azul B", "2F0FD0", "Azul C", "3C7587", "Azul D", "3C5C87", "Azul E", "8F0FD0", "Violeta A", "493C87", "Violeta B", "6E3C87", "Violeta C", "DB0F86", "Rosa A", "8B3E6B", "Rosa B"
 ';
 
-$cores_eixos_array = array( "#F56954",
-                            "#F39C12",
-                            "#0073B7",
-                            "#00A65A",
-                            "#932AB6",
-                            "#85144B",
-                            "#001F3F",
-                            "#3D9970",
-                            "#678A00",
-                            "#52007A",
-                            "#992781",
-                            "#998F43",
-                            "#149941");
+
+$cores_eixos_array = array( "#FF1212",
+                            "#984444",
+                            "#FF7112",
+                            "#FFA012",
+                            "#986644",
+                            "#FFFF12",
+                            "#987644",
+                            "#988744",
+                            "#B2E710",
+                            "#0FD00F",
+                            "#989844",
+                            "#7C9040",
+                            "#3C873C",
+                            "#0F9FD0",
+                            "#0F5FD0",
+                            "#2F0FD0",
+                            "#3C7587",
+                            "#3C5C87",
+                            "#8F0FD0",
+                            "#493C87",
+                            "#6E3C87",
+                            "#DB0F86",
+                            "#8B3E6B" );
 
 
 function dadospessoais_scripts() {
