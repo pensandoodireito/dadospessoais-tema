@@ -73,7 +73,7 @@
         <p class="mt-xl"></p>
         <?php
                 // Gera os modais de eixos
-                $query_eixos = new WP_Query("post_type=eixo-de-debate");
+                $query_eixos = new WP_Query("post_type=eixo-de-debate&orderby=menu_order&order=asc&posts_per_page=-1");
 
                 if ($query_eixos->have_posts()) {
                     while ($query_eixos->have_posts()) {
