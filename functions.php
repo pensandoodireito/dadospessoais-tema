@@ -2,10 +2,22 @@
 
 // Variável global dos eixos em discussão
 $cores_eixos_editor = '
-    "F56954", "Vermelho", "F39C12", "Amarelo", "0073B7", "Azul", "00A65A", "Verde", "932AB6", "Roxo", "85144B", "Maroon",   "001F3F", "Azul marinho", "3D9970", "Oliva"
+    "F56954", "Vermelho", "F39C12", "Amarelo", "0073B7", "Azul", "00A65A", "Verde", "932AB6", "Roxo", "85144B", "Maroon",   "001F3F", "Azul marinho", "3D9970", "Oliva", "678A00", "Verde Escuro", "52007A", "Violeta", "992781", "Rosa", "998F43", "Bege", "149941", "Verde Vivo"
 ';
 
-$cores_eixos_array = array("#F56954",  "#F39C12",  "#0073B7", "#00A65A",  "#932AB6",  "#85144B", "#001F3F", "#3D9970");
+$cores_eixos_array = array( "#F56954",
+                            "#F39C12",
+                            "#0073B7",
+                            "#00A65A",
+                            "#932AB6",
+                            "#85144B",
+                            "#001F3F",
+                            "#3D9970",
+                            "#678A00",
+                            "#52007A",
+                            "#992781",
+                            "#998F43",
+                            "#149941");
 
 
 function dadospessoais_scripts() {
@@ -117,7 +129,7 @@ function editor_visual_novas_cores( $init ) {
     if (get_post_type() ==  "texto-em-debate") {
 
         $init['textcolor_map'] = '[' . $cores_eixos_editor .']'; // build colour grid default+custom colors
-        $init['textcolor_rows'] = 1; // enable 6th row for custom colours in grid
+        $init['textcolor_rows'] = 3; // enable 6th row for custom colours in grid
         return $init;
     } else {
         return $init;
