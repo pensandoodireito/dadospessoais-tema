@@ -314,3 +314,19 @@ function dadospessoais_slugfy($text)
 
     return $text;
 }
+
+/**
+ * Função para recuperar post a partir do seu slug
+ *
+ * @param $page_slug
+ * @param string $output
+ * @param string $post_type
+ * @return null|WP_Post
+ */
+function dadospessoais_get_by_slug($page_slug, $output = OBJECT, $post_type = 'page' ) {
+    global $wpdb;
+    $page = $wpdb->get_var( $wpdb->prepare( "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_type= %s", $page_slug, $post_type ) );
+    if ( $page )
+        return get_post($page, $output);
+    return null;
+}
