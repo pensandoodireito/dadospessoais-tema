@@ -19,7 +19,7 @@ jQuery(function ($) {
 
     });
 
-    if (typeof('require') != 'undefined') {
+    if (typeof(require) != 'undefined') {
         // Templates de comentário
         require.register("side-comments/js/helpers/mobile-check.js", function (exports, require, module) {
             module.exports = function () {
