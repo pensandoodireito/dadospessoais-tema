@@ -9,7 +9,7 @@
             $page_apl = dadospessoais_get_by_slug('anteprojeto-de-lei-para-a-protecao-de-dados-pessoais', OBJECT, 'texto-em-debate');
             ?>
             <a href="<?php echo get_permalink($page_apl->ID); ?>">
-                Visualizar esse eixo no texto de lei
+                Visualizar este eixo no texto de lei
             </a>
         </div>
     </div>
