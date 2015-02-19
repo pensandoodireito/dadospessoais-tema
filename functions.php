@@ -330,3 +330,14 @@ function dadospessoais_get_by_slug($page_slug, $output = OBJECT, $post_type = 'p
         return get_post($page, $output);
     return null;
 }
+
+/**
+ * Função para incluir metas no header do dadospessoais
+ */
+function dadospessoais_meta_headers() {
+?>
+    <meta name="google-site-verification" content="BsLDGuqe43xz3qpURHjNWLVhQ7qI-Ps8VX2DB1lEbxA" />
+<?php
+}
+
+add_action( 'wp_head', 'dadospessoais_meta_headers' );
