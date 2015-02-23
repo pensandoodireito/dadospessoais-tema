@@ -84,15 +84,29 @@
   margin-left: -0.5em;
   width: 0.5em;
 }
-#protecao-dados .debates {
-  background: url("../images/bck-debates-prot-debates.jpg") no-repeat left top #e5c36f;
-  background-size: 100%;
-  text-align: center;
+#protecao-dados .debates:before,
+#protecao-dados .debates:after {
+  content: " ";
+  display: table;
 }
-#protecao-dados .debates .contexto {
-  border-radius: 5px;
-  box-shadow: 0px 1px 6px 1px rgba(50, 50, 50, 0.31);
-  background-color: #fff;
-  padding: 20px;
-  margin: 20px;
+#protecao-dados .debates:after {
+  clear: both;
+}
+#protecao-dados .debates .participe,
+#protecao-dados .debates .sobretexto {
+  margin: 0 !important;
+  padding: 0 !important;
+  min-height: 500px;
+}
+#protecao-dados .debates .participe {
+  background: url("../images/bck-debates-dados-pessoais-03.jpg") no-repeat bottom center #178b83;
+}
+#protecao-dados .debates .participe .contexto {
+  padding: 30px;
+}
+#protecao-dados .debates .sobretexto {
+  background: url("../images/bck-debates-dados-pessoais-04.jpg") no-repeat bottom right #0c635d;
+}
+#protecao-dados .debates .sobretexto .contexto {
+  padding: 30px;
 }

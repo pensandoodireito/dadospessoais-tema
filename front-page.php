@@ -29,35 +29,52 @@
           <p>Esta lei tem por objetivo garantir e proteger, no âmbito do tratamento de dados pessoais, a dignidade e os direitos fundamentais da pessoa, particularmente em relação à sua liberdade, igualdade e privacidade pessoal e familiar, nos termos do art. 5º, incisos X e XII da Constituição Federal</p>
         </div>
       </div>
-      <div class="assinatura white">
-        <p class="col-sm-6 col-sm-offset-6 fontsize-sm text-center">Realização:</p>
-        <div class="clearfix text-center fontsize-sm mt-md">
-          <div class="col-sm-3 col-sm-offset-6">
-            <p class="text-center"> Secretaria de <br>
-            <strong>Assuntos Legislativos</strong>
-            </p>
+      <div class="assinatura">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="clearfix text-center fontsize-sm mt-md">
+              <p class="fontsize-sm text-center clearfix">Realização:</p>
+              <div class="col-sm-6">
+                <p class="text-center"> Secretaria de <br>
+                <strong>Assuntos Legislativos</strong>
+                </p>
+              </div>
+              <div class="col-sm-6">
+                <p class="text-center"> Secretaria <br>
+                <strong>Nacional do Consumidor</strong>
+                </p>
+              </div>
+            </div>
           </div>
-          <div class="col-sm-3">
-            <p class="text-center"> Secretaria <br>
-            <strong>Nacional do Consumidor</strong>
-            </p>
+          <div class="col-sm-6">
+            <p class="text-center mt-lg fontsize-lg"><a href="#" class="font-roboto"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/english.png" class="mr-xs"> English version?</a></p>
           </div>
         </div>
       </div>
     </div>
-    <div class="debates clearfix">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="contexto">
+    <div class="debates">
+      <div class="col-md-6 participe">
+        <div class="contexto white">
           <?php
           $page_participe = pensando_get_participe_page();
           if ($page_participe) {
           ?>
-          <h3 class="font-amatic red h2"><?php echo $page_participe->post_title; ?></h3>
+          <h3 class="font-amatic h2"><?php echo $page_participe->post_title; ?></h3>
           <p class="mt-md"><?php echo $page_participe->post_excerpt; ?></p>
           <p class="mt-md">
           <a href="<?php echo get_permalink($page_participe->ID); ?>" class="btn btn-danger btn-lg font-roboto">Participe do debate!</a>
           </p>
           <?php } ?>
+        </div>
+      </div>
+      <div class="col-md-6 sobretexto">
+        <div class="contexto white">
+          <h3 class="font-amatic h2">Sobre o texto </h3>
+          <p class="mt-md">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pretium pellentesque aliquet. Suspendisse potenti. Maecenas commodo et sapien id suscipit. </p>
+          <p class="mt-md yellow"><a href="#"><strong><i class="fa fa-chevron-right"></i> Confira o texto de anteprojeto</strong></p></a>
+          <p class="mt-md">
+          <a href="#" class="btn btn-primary btn-lg font-roboto">Download do texto de anteprojeto</a>
+          </p>
         </div>
       </div>
     </div>
