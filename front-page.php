@@ -47,7 +47,8 @@
             </div>
           </div>
           <div class="col-sm-6">
-            <p class="text-center mt-lg fontsize-lg"><a href="#" class="font-roboto"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/english.png" class="mr-xs"> English version?</a></p>
+            <p class="text-center mt-lg fontsize-lg">
+              <a href="<?php echo dadospessoais_get_english_information_link(); ?>" class="font-roboto"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/english.png" class="mr-xs"> English information</a></p>
           </div>
         </div>
       </div>
@@ -70,11 +71,15 @@
       <div class="col-md-6 sobretexto">
         <div class="contexto white">
           <h3 class="font-amatic h2">Sobre o texto </h3>
-          <p class="mt-md">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque pretium pellentesque aliquet. Suspendisse potenti. Maecenas commodo et sapien id suscipit. </p>
-          <p class="mt-md yellow"><a href="#"><strong><i class="fa fa-chevron-right"></i> Confira o texto de anteprojeto</strong></p></a>
+          <?php
+            $page_anteprojeto = dadospessoais_get_anteprojeto_page();
+            if ($page_anteprojeto) {
+          ?>
+          <p class="mt-md"><?php echo $page_anteprojeto->post_excerpt; ?></p>
           <p class="mt-md">
-          <a href="#" class="btn btn-primary btn-lg font-roboto">Download do texto de anteprojeto</a>
+          <a href="<?php echo get_permalink($page_anteprojeto); ?>" class="btn btn-primary btn-lg font-roboto">Comente o texto do Anteprojeto</a>
           </p>
+          <?php } ?>
         </div>
       </div>
     </div>

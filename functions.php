@@ -341,3 +341,18 @@ function dadospessoais_meta_headers() {
 }
 
 add_action( 'wp_head', 'dadospessoais_meta_headers' );
+
+/**
+ * Função para obter o link da página de informação em inglês
+ */
+function dadospessoais_get_english_information_link() {
+    $page_english = dadospessoais_get_by_slug('english-information');
+    return get_permalink($page_english);
+}
+
+/**
+ * Obtem o objeto page do anteprojeto
+ */
+function dadospessoais_get_anteprojeto_page() {
+    return dadospessoais_get_by_slug('anteprojeto-de-lei-para-a-protecao-de-dados-pessoais', OBJECT, 'texto-em-debate');
+}
