@@ -172,3 +172,14 @@
 .conteudo .commentable-container .side-comment .right-of-avatar {
   width: calc(100% - 52px);
 }
+
+/* X para fechar caixa de comentário */
+.conteudo .commentable-container .comments-wrapper span.glyphicon-remove-circle {
+  float: right;
+  font-size: 34px;
+  top: -13px;
+  right: 5px;
+  margin-bottom: -10px;
+  margin-top: -10px;
+  cursor: pointer;
+} 
