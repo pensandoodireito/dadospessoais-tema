@@ -36,7 +36,7 @@ jQuery(function ($) {
             module.exports = '<div class="side-comment <%= sectionClasses %>">\n  ' +
             '                           <a href="#" class="marker">\n    <span><%= comments.length %></span>\n  </a>\n  \n  ' +
             '                   <div class="comments-wrapper">\n    ' +
-            '                       <i class="fa fa-times" onClick="sideComments.hideComments()"></i>' +
+            '                       <i class="fa fa-times" onClick="document.body.click();"></i>' +
             '                   <ul class="comments">\n      ' +
             '                           <% _.each(comments, function( comment ){ %>\n        ' +
             '                               <%= _.template(commentTemplate, { comment: comment, currentUser: currentUser }) %>\n      ' +

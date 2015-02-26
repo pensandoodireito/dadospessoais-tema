@@ -174,7 +174,7 @@
 }
 
 /* X para fechar caixa de comentário */
-.conteudo .commentable-container .comments-wrapper span.glyphicon-remove-circle {
+.conteudo .commentable-container .comments-wrapper i {
   float: right;
   font-size: 34px;
   top: -13px;
