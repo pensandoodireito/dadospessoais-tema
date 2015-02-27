@@ -68,14 +68,14 @@ jQuery(function ($) {
         });
 
         require.register("side-comments/templates/comment.html", function (exports, require, module) {
-            module.exports = '<li data-comment-id="<%= comment.id %>">\n  ' +
+            module.exports = '<li data-comment-id="<%= comment.commentID %>">\n  ' +
             '                   <div class="author-avatar">\n  ' +
             '                       <img src="<%= comment.authorAvatarUrl %>">\n  ' +
             '                   </div>\n  ' +
             '                       <p class="author-name right-of-avatar">\n    <%= comment.authorName %>\n  </p>\n  ' +
             '                       <p class="comment right-of-avatar">\n    <%= comment.comment %>\n  </p>\n  <% if (currentUser && comment.authorId === currentUser.id){ %>\n  ' +
             '                           <a href="#" class="action-link delete">Apagar</a>\n  <% } %>\n' +
-            '                   </li>';
+            '                   </li>'; 
         });
     }
 });
