@@ -73,6 +73,8 @@ ul.comments {
 
 .conteudo .commentable-container .side-comment .right-of-avatar:focus{border:2px solid #4FAF62}
 
+.conteudo .side-comment:not(.has-comments) a.marker span {display: none;}
+
 /* X para fechar caixa de comentário */
 .conteudo .commentable-container .comments-wrapper i {
   float: right;
