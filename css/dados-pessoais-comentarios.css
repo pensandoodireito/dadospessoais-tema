@@ -90,6 +90,6 @@ ul.comments {
 .back-to-top {
   z-index: 1000;
 }
-.side-comment.has-comments .comments-wrapper {
+div.side-comment.has-comments .comments-wrapper {
   top: 0;
 }
