@@ -2,12 +2,14 @@
 .conteudo .commentable-container .side-comment .comments-wrapper {
   padding: 15px 0 0 0;
   border: 2px solid #999;
-  width: 800px;
-  left: -307px;
+  width: 100%;
+  left: 0;
   z-index: 2;
   color: #222;
   border-radius: 0 0 10px 10px;
+  position:relative
 }
+
 @-moz-document url-prefix() {
   .conteudo .commentable-container .side-comment.has-comments.active {
     height: 0;
@@ -21,11 +23,11 @@
   color: #000;
 }
 .conteudo .commentable-container .side-comment {
-  float: right;
-  width: 501px;
+  width: 100%;
   min-height: 100%;
   height: 100%;
-}
+  float:none
+}  
 .conteudo .commentable-container .side-comment .comment-box,
 .conteudo .commentable-container .side-comment .comments .comment {
   border: none;
@@ -48,7 +50,6 @@
 }
 .conteudo .commentable-container .side-comment.active {
   position: relative;
-  top: 42px;
 }
 
 .conteudo .commentable-container .commentable-section span {
@@ -78,10 +79,15 @@ ul.comments {
 /* X para fechar caixa de comentário */
 .conteudo .commentable-container .comments-wrapper i {
   float: right;
-  font-size: 34px;
+  font-size: 16px;
   top: -13px;
   right: 5px;
   margin-bottom: -10px;
-  margin-top: -18px;
+  margin-top: -15px;
   cursor: pointer;
 } 
+
+.back-to-top {
+  z-index: 1000;
+}
+
