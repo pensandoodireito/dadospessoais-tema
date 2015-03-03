@@ -9,12 +9,6 @@
   border-radius: 0 0 10px 10px;
   position:relative
 }
-
-@-moz-document url-prefix() {
-  .conteudo .commentable-container .side-comment.has-comments.active {
-    height: 0;
-}
-}
 .conteudo .commentable-container p.commentable-section.active {
   width: 100%; 
   margin-top: 33px;
