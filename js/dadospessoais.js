@@ -74,14 +74,14 @@ jQuery(function ($) {
             '                   </div>\n  ' +
             '                       <p class="author-name right-of-avatar">\n    <%= comment.authorName %>\n  </p>\n  ' +
             '                       <p class="comment right-of-avatar">\n    <%= comment.comment %>\n  </p>\n  ' + 
-            '                       <a href="#" class="add-reply" data-parent="<%= comment.parentID%>" data-comment="<%= comment.commentID %>">Deixe sua opinião</a>\n    \n  ' +
+            '                       <a href="#" class="add-reply" data-parent="<%= comment.parentID%>" data-comment="<%= comment.commentID %>">Responder</a>\n    \n  ' +
             '                           <% if (currentUser && currentUser.id != 9999){ %>\n     ' +
             '                                <div class="comment-form" data-parent="<%= comment.parentID%>" data-comment="<%= comment.commentID %>">\n        ' +
             '                           <div class="author-avatar">\n          ' +
             '                           <img src="<%= currentUser.avatarUrl %>">\n        ' +
             '                       </div>\n        ' +
             '                               <p class="author-name">\n          <%= currentUser.name %>\n        </p>\n        ' +
-            '                               <div class="comment-box right-of-avatar" contenteditable="true" data-parent="<%= comment.parentID%>" data-comment="<%= comment.commentID %>" data-placeholder-content="Deixe sua opinião...">' +
+            '                               <div class="comment-box right-of-avatar" contenteditable="true" data-parent="<%= comment.parentID%>" data-comment="<%= comment.commentID %>" data-placeholder-content="Responder o comentário..." placeholder="Responder o comentário...">' +
             '                                   </div>\n        ' +
             '                       <div class="actions right-of-avatar">\n          ' +
             '                           <a href="#" class="action-link reply" data-parent="<%= comment.parentID %>" data-comment="<%= comment.commentID %>">Enviar</a>\n          ' +
