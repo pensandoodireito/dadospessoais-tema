@@ -110,3 +110,72 @@
 #protecao-dados .debates .sobretexto .contexto {
   padding: 30px;
 }
+
+#protecao-dados .side-comment .add-reply {
+  display: none;
+}
+#protecao-dados .side-comment.has-comments .add-reply,
+#protecao-dados .side-comment.no-current-user .add-reply {
+  display: block;
+}
+#protecao-dados .side-comment.no-current-user .add-reply {
+  margin-top: 20px;
+}
+#protecao-dados .side-comment.has-comments .add-reply.hide {
+  display: none;
+}
+#protecao-dados .side-comment .add-reply.active {
+  display: block;
+}
+#protecao-dados .side-comment .add-reply {
+  color: #B3B3B1;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 300;
+  padding: 0px 8px;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  margin-top: 10px;
+}
+#protecao-dados .side-comment .add-reply:before {
+  content: "+";
+  border: 2px solid #DEDEDC;
+  border-radius: 100px;
+  width: 23px;
+  height: 23px;
+  color: #DEDEDC;
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  float: left;
+  margin-right: 15px;
+  letter-spacing: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+#protecao-dados .side-comment .add-reply:hover {
+  text-decoration: none;
+}
+#protecao-dados .side-comment .add-reply:hover {
+  color: #4FAF62;
+}
+#protecao-dados .side-comment .add-reply:hover:before {
+  border-color: #4FAF62;
+  color: #4FAF62;
+}
+#protecao-dados .side-comment .add-reply {
+    border: none;
+    padding: 14px;
+    background-color: #999;
+    color: #fff;
+}
+#protecao-dados .side-comment .add-reply:before {
+    line-height: 20px;
+}
+#protecao-dados .side-comment .add-reply:hover,
+#protecao-dados .side-comment .add-reply:hover:before {
+    color: #f1f1f1;
+}
