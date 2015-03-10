@@ -95,9 +95,6 @@ jQuery(function ($) {
             '                                   <a href="<%= dadosPessoais.signup_url %>">cadastre-se</a>.</p>' +
             '                               </div></div>' +
             '                           <% } %>' +
-            '                       <% if (currentUser && false){ %>\n  ' +
-            '                           <a href="#" class="action-link post">Responder</a>\n ' +
-            '                       <% } %>\n' +
             '                       <% if (currentUser && comment.authorId === currentUser.id){ %>\n  ' +
             '                           <a href="#" class="action-link delete">Apagar</a>\n  ' +
             '                       <% } %>\n' +
