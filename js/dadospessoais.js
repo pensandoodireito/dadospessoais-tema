@@ -42,9 +42,9 @@ jQuery(function ($) {
             '                               <%= _.template(commentTemplate, { comment: comment, currentUser: currentUser }) %>\n      ' +
             '                           <% }) %>\n    ' +
             '                   </ul>\n    \n    ' +
-            '                       <a href="#" class="add-comment">Deixe sua opinião</a>\n    \n  ' +
+            '                       <a href="#" class="add-comment" data-parent="0" data-comment="">Deixe sua opinião</a>\n    \n  ' +
             '                           <% if (currentUser && currentUser.id != 9999){ %>\n     ' +
-            '                                <div class="comment-form">\n        ' +
+            '                                <div class="comment-form" data-parent="0" data-comment="">\n        ' +
             '                           <div class="author-avatar">\n          ' +
             '                           <img src="<%= currentUser.avatarUrl %>">\n        ' +
             '                       </div>\n        ' +
@@ -52,12 +52,12 @@ jQuery(function ($) {
             '                               <div class="comment-box right-of-avatar" contenteditable="true" data-placeholder-content="Deixe sua opinião...">' +
             '                                   </div>\n        ' +
             '                       <div class="actions right-of-avatar">\n          ' +
-            '                           <a href="#" class="action-link post">Enviar</a>\n          ' +
-            '                           <a href="#" class="action-link cancel">Cancelar</a>\n        ' +
+            '                           <a href="#" class="action-link post" data-parent="0" data-comment="">Enviar</a>\n          ' +
+            '                           <a href="#" class="action-link cancel" data-parent="0" data-comment="">Cancelar</a>\n        ' +
             '                       </div>\n      ' +
             '                                   </div>\n    ' +
             '                           <% } else { %>\n  ' +
-            '                               <div class="comment-form"><div class="comment-box register-login">' +
+            '                               <div class="comment-form" data-parent="0" data-comment=""><div class="comment-box register-login">' +
             '                                   <p class="author-name">Você precisa estar logado para comentar.</p>' +
             '                                   <p><a href="<%= dadosPessoais.login_url %>">Faça seu login</a> ou ' +
             '                                   <a href="<%= dadosPessoais.signup_url %>">cadastre-se</a>.</p>' +
@@ -68,14 +68,37 @@ jQuery(function ($) {
         });
 
         require.register("side-comments/templates/comment.html", function (exports, require, module) {
-            module.exports = '<li data-comment-id="<%= comment.id %>">\n  ' +
+            module.exports = '<li data-comment-id="<%= comment.commentID %>" data-parent-id="<%= comment.parentID%>">\n  ' +
             '                   <div class="author-avatar">\n  ' +
             '                       <img src="<%= comment.authorAvatarUrl %>">\n  ' +
             '                   </div>\n  ' +
             '                       <p class="author-name right-of-avatar">\n    <%= comment.authorName %>\n  </p>\n  ' +
-            '                       <p class="comment right-of-avatar">\n    <%= comment.comment %>\n  </p>\n  <% if (currentUser && comment.authorId === currentUser.id){ %>\n  ' +
-            '                           <a href="#" class="action-link delete">Apagar</a>\n  <% } %>\n' +
-            '                   </li>';
+            '                       <p class="comment right-of-avatar">\n    <%= comment.comment %>\n  </p>\n  ' + 
+            '                       <a href="#" class="add-reply" data-parent="<%= comment.parentID%>" data-comment="<%= comment.commentID %>">Responder</a>\n    \n  ' +
+            '                           <% if (currentUser && currentUser.id != 9999){ %>\n     ' +
+            '                                <div class="comment-form" data-parent="<%= comment.parentID%>" data-comment="<%= comment.commentID %>">\n        ' +
+            '                           <div class="author-avatar">\n          ' +
+            '                           <img src="<%= currentUser.avatarUrl %>">\n        ' +
+            '                       </div>\n        ' +
+            '                               <p class="author-name">\n          <%= currentUser.name %>\n        </p>\n        ' +
+            '                               <div class="comment-box right-of-avatar" contenteditable="true" data-parent="<%= comment.parentID%>" data-comment="<%= comment.commentID %>" data-placeholder-content="Responder o comentário..." placeholder="Responder o comentário...">' +
+            '                                   </div>\n        ' +
+            '                       <div class="actions right-of-avatar">\n          ' +
+            '                           <a href="#" class="action-link reply" data-parent="<%= comment.parentID %>" data-comment="<%= comment.commentID %>">Enviar</a>\n          ' +
+            '                           <a href="#" class="action-link cancel" data-parent="<%= comment.parentID %>" data-comment="<%= comment.commentID %>">Cancelar</a>\n        ' +
+            '                       </div>\n      ' +
+            '                                   </div>\n    ' +
+            '                           <% } else { %>\n  ' +
+            '                               <div class="comment-form" data-parent="<%= comment.parentID%>" data-comment="<%= comment.commentID %>"><div class="comment-box register-login">' +
+            '                                   <p class="author-name">Você precisa estar logado para comentar.</p>' +
+            '                                   <p><a href="<%= dadosPessoais.login_url %>">Faça seu login</a> ou ' +
+            '                                   <a href="<%= dadosPessoais.signup_url %>">cadastre-se</a>.</p>' +
+            '                               </div></div>' +
+            '                           <% } %>' +
+            '                       <% if (currentUser && comment.authorId === currentUser.id){ %>\n  ' +
+            '                           <a href="#" class="action-link delete">Apagar</a>\n  ' +
+            '                       <% } %>\n' +
+            '                   </li>'; 
         });
     }
 });
