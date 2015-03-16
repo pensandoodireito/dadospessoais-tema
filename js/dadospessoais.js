@@ -37,7 +37,7 @@ jQuery(function ($) {
             '                           <a href="#" class="marker">\n    <span><%= comments.length %></span>\n  </a>\n  \n  ' +
             '                   <div class="comments-wrapper">\n    ' +
             '                       <i class="fa fa-times" onClick="document.body.click();"></i>' +
-            '                   <ul class="comments">\n      ' +
+            '                   <ul class="comments" data-root-id="0">\n      ' +
             '                           <% _.each(comments, function( comment ){ %>\n        ' +
             '                               <%= _.template(commentTemplate, { comment: comment, currentUser: currentUser }) %>\n      ' +
             '                           <% }) %>\n    ' +
