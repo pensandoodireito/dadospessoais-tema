@@ -57,7 +57,7 @@
       <div class="col-md-6 participe">
         <div class="contexto white">
           <?php
-          $page_participe = pensando_get_participe_page();
+          $page_participe = participacao_get_participe_page();
           if ($page_participe) {
           ?>
           <h3 class="font-amatic h2"><?php echo $page_participe->post_title; ?></h3>
