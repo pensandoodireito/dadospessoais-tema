@@ -10,25 +10,44 @@
             <div class="commentable-container">
                     <?php the_content(); ?>
                 
-                <h4>Contribuições em texto</h4>
+                <h4>Contribuições em PDF</h4>
                 <!-- data-section-id iniciando em um valor alto para não conflitar com os comentários do texto -->
-                <p class="commentable-section" data-section-id="9999">
-                    <img alt="pdf" src="<?php echo get_stylesheet_directory_uri();?>/images/pdf-icon.png"/><strong>Facebook Brasil</strong>
-                    <iframe id="pauta-pdf-content" style="width: 100%; min-height: 250px; max-height: 800px; height: 300px;" src="https://docs.google.com/viewer?url=http%3A%2F%2Fparticipacao.mj.gov.br%2Fmarcocivil%2Fwp-content%2Fuploads%2Fsites%2F2%2F2015%2F03%2FCONSULTA-PUBLICA-MJ-Contribui%C3%A7%C3%A3o-MPAAL-NEUTRALIDADE-DA-REDE1.pdf&embedded=true">
+                <?php 
+                    $pdf_contribution_list = get_post_meta(get_the_ID(), 'pdf_contribution_list');
+                    
+                    $data_section = 10000;
+                    
+                    foreach ($pdf_contribution_list as $pdf_contribution) {
+                
+                ?>
+                <p class="commentable-section" data-section-id="<?php echo $data_section; ?>">
+                    <img alt="pdf" src="<?php echo get_stylesheet_directory_uri();?>/images/pdf-icon.png"/><strong><?php echo $pdf_contribution['author']; ?></strong>
+                    <iframe id="pauta-pdf-content" style="width: 100%; min-height: 250px; max-height: 800px; height: 300px;" src="<?php echo $pdf_contribution['pdf_url']; ?>">
+                    PDF
                     </iframe>
                 </p>
+                <?php 
+                        $data_section++;
+                
+                    } ?>
             </div>
             <hr/>
             <div>
                 <h4>Remeter contribuição em PDF</h4>
-                <form enctype="multipart/form-data">
+                
+                <?php if (is_user_logged_in()) { ?>
+                <form method="POST" id="form-contribuicao-pdf" action="#form-contribuicao-pdf" enctype="multipart/form-data">
                     <div class="mt-md">
-                        <input class="btn btn-info" type="file" data-filename-placement="inside" name="pauta_pdf_contribution" title="Selecione o arquivo PDF que você deseja enviar.">
+                        <input class="btn btn-info" type="file" data-filename-placement="inside" name="pdf_contribution" title="Selecione o arquivo PDF que você deseja enviar.">
                     </div>
                     <div class="mt-md">
                         <button type="submit" class="btn btn-primary">Enviar arquivo</button>
                     </div>
                 </form>
+                <?php } else { ?>
+                <strong>Você precisa estar logado no sistema para enviar uma contribuição. </strong> 
+                <a href="<?php echo wp_login_url($_SERVER['REQUEST_URI']); ?>">Faça seu login</a> ou <a href="<?php echo wp_registration_url(); ?>">Cadastre-se</a>
+                <?php } ?>
             </div>
 	</div>
 </div>
