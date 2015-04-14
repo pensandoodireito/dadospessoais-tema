@@ -34,12 +34,17 @@
 		<div class="well">
 			<h5><strong>Envie sua contribuição em PDF</strong></h5>
 			
-			<?php if (is_user_logged_in()) { ?>
+			<?php if (is_user_logged_in()) { 
+                            
+                                $user = wp_get_current_user();
+                            ?>
 			<form method="POST" id="form-contribuicao-pdf" action="#form-contribuicao-pdf" enctype="multipart/form-data">
 				<div class="row">
 					<div class="col-sm-8 mt-sm">
-						<!--<input type="file" class="btn btn-primary" data-filename-placement="outside" name="pdf_contribution" title="Selecionar arquivo PDF">-->
-						<input type="file" class="filestyle" data-buttonBefore="true" name="pdf_contribution" data-buttonText="Find file">
+						
+                                            <input type="hidden" name="author" value="<?php echo $user->display_name; ?>"/>  
+                                            <input type="hidden" name="file_nonce" value="<?php echo wp_create_nonce('pdf-upload'); ?>" />
+                                            <input type="file" class="filestyle" data-buttonBefore="true" name="pdf_contribution" data-buttonText="Procurar arquivo...">
 						
 					</div>
 					<div class="col-sm-4 mt-sm">
