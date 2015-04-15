@@ -2,19 +2,21 @@
 get_header(); 
 
 // Verificação de segurança se o nonce foi postado e se é correto
-if (wp_verify_nonce($_POST['file_nonce'],'pdf-upload') ) {
-    if (isset($_FILES['pdf_contribution'])) {
+if ( isset($_POST['file_nonce']) ) {
+  if (wp_verify_nonce($_POST['file_nonce'],'pdf-upload') ) {
+      if (isset($_FILES['pdf_contribution'])) {
 
-        $upload_dir = wp_upload_dir();
-        $file_name = md5($_FILES['pdf_contribution']['name'].$_FILES['pdf_contribution']['size']) . '.pdf';
+          $upload_dir = wp_upload_dir();
+          $file_name = md5($_FILES['pdf_contribution']['name'].$_FILES['pdf_contribution']['size']) . '.pdf';
 
-        move_uploaded_file($_FILES['pdf_contribution']['tmp_name'], $upload_dir['path'] . '/' . $file_name);
+          move_uploaded_file($_FILES['pdf_contribution']['tmp_name'], $upload_dir['path'] . '/' . $file_name);
 
-        add_post_meta(get_the_ID(), 'pdf_contribution_list', 
-                array(  'author' => $_POST['author'],
-                        'pdf_url' => $upload_dir['url'] . '/' . $file_name ) );
+          add_post_meta(get_the_ID(), 'pdf_contribution_list', 
+                  array(  'author' => $_POST['author'],
+                          'pdf_url' => $upload_dir['url'] . '/' . $file_name ) );
 
-    }    
+      }    
+  }
 }
 ?>
 <div class="container">
