@@ -1,8 +1,8 @@
 <div class="mt-md row">
 	<div class="col-md-3">
-		<?php get_template_part("menu", "indice"); ?>
+		<?php get_template_part("menu", "eixos"); ?>
 		<div class="mt-md" id="fixa-menu-eixo">
-			<?php get_template_part("menu", "eixos"); ?>
+			<?php get_template_part("menu", "indice"); ?>
 		</div>
 	</div>
 	<div class="col-md-9">
@@ -34,17 +34,17 @@
 		<div class="well">
 			<h5><strong>Envie sua contribuição em PDF</strong></h5>
 			
-			<?php if (is_user_logged_in()) { 
-                            
-                                $user = wp_get_current_user();
-                            ?>
+			<?php if (is_user_logged_in()) {
+			
+			$user = wp_get_current_user();
+			?>
 			<form method="POST" id="form-contribuicao-pdf" action="#form-contribuicao-pdf" enctype="multipart/form-data">
 				<div class="row">
 					<div class="col-sm-8 mt-sm">
 						
-                                            <input type="hidden" name="author" value="<?php echo $user->display_name; ?>"/>  
-                                            <input type="hidden" name="file_nonce" value="<?php echo wp_create_nonce('pdf-upload'); ?>" />
-                                            <input type="file" class="filestyle" data-buttonBefore="true" name="pdf_contribution" data-buttonText="Procurar arquivo...">
+						<input type="hidden" name="author" value="<?php echo $user->display_name; ?>"/>
+						<input type="hidden" name="file_nonce" value="<?php echo wp_create_nonce('pdf-upload'); ?>" />
+						<input type="file" class="filestyle" data-buttonBefore="true" name="pdf_contribution" data-buttonText="Procurar arquivo...">
 						
 					</div>
 					<div class="col-sm-4 mt-sm">

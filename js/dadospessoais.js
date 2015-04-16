@@ -102,3 +102,23 @@ jQuery(function ($) {
         });
     }
 });
+
+
+jQuery(function ($) {
+    $(window).scroll(sticky_relocate);
+    sticky_relocate();
+
+    // botão que fecha o menu indice
+    $('.fecha-menu-indice').click(function() {
+        $('.indice .menu').slideToggle('slow');
+        $(".fecha-menu-indice .fa").toggleClass('fa-angle-up fa-angle-down');
+    });
+
+// botão que fecha o menu eixos
+    $('.fecha-menu-eixo').click(function() {
+        $('.eixo .menu').slideToggle('slow');
+        $(".fecha-menu-eixo .fa").toggleClass('fa-angle-up fa-angle-down');
+    });
+    back_to_top($);
+
+});

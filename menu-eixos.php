@@ -1,8 +1,8 @@
-<div class="menu-submenu" id="menueixos-sticker">
+<div class="menu-submenu eixo">
     <div class="panel panel-submenu">
-        <div class="panel-heading"><h6 class="panel-title">Eixos em debate</h6></div>
+        <div class="panel-heading clearfix"><h6 class="panel-title pull-left">Eixos em debate</h6> <button type="button" class="btn btn-default btn-xs fecha-menu-eixo pull-right" title="Econder este menu"><i class="fa fa-angle-up"></i></button></div>
         <div class="panel-body vertical">
-            <div class="menu">
+            <div class="menu" style="display:none;">
                 <ul>
                     <?php
                     // Gera os modais de eixos
