@@ -27,6 +27,12 @@
   border: none;
   width: 100%;
 }
+.commentable-container .side-comment .comments .comments {
+  max-height: 100%;
+  padding-left: 8px;
+  border-left: 6px solid #2a8cca;
+}
+
 .conteudo .commentable-container .author-avatar IMG{
   border-radius: 20px;
   border:1px solid #666;  
