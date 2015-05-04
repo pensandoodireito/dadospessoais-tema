@@ -13,8 +13,8 @@
 			<h4 class="divider-top red font-roboto mt-lg pt-lg">Contribuições em PDF</h4>
 			<!-- data-section-id iniciando em um valor alto para não conflitar com os comentários do texto -->
 			<?php
-			$pdf_contribution_list = get_post_meta(get_the_ID(), 'pdf_contribution_list');
-			
+			$pdf_contribution_list = get_post_meta(get_the_ID(), 'pdf_contribution_list', true);
+
 			$data_section = 10000;
 			
 			foreach ($pdf_contribution_list as $pdf_contribution) {
