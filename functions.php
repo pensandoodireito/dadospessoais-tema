@@ -31,17 +31,30 @@ $cores_eixos_array = array( "#FF1212",
                             "#8B3E6B" );
 
 
+add_action( 'wp_enqueue_scripts', 'dadospessoais_scripts' );
 function dadospessoais_scripts() {
     wp_enqueue_script( 'dadospessoais', get_stylesheet_directory_uri() . '/js/dadospessoais.js' , array('jquery') );
 
     $var_plataforma = array();
     $var_plataforma['signup_url'] = wp_registration_url();
     $var_plataforma['login_url'] = wp_login_url();
-
+    $var_plataforma['configs'] = array(
+      'ajaxurl' => admin_url('admin-ajax.php'),
+      'ajaxgif' => get_template_directory_uri() . '/images/ajax-loader.gif'
+    );
     wp_localize_script( 'dadospessoais', 'dadosPessoais', $var_plataforma );
 }
 
-add_action( 'wp_enqueue_scripts', 'dadospessoais_scripts' );
+
+add_action( 'admin_enqueue_scripts', 'dadospessoais_admin_scripts');
+function dadospessoais_admin_scripts() {
+    wp_enqueue_script( 'dadospessoais', get_stylesheet_directory_uri() . '/js/dadospessoais-admin.js' , array('jquery') );
+    $var_plataforma = array();
+    $var_plataforma['ajaxurl'] = admin_url('admin-ajax.php');
+    $var_plataforma['ajaxgif'] = get_template_directory_uri() . '/images/ajax-loader.gif';
+    wp_localize_script( 'dadospessoais', 'dadosPessoais', $var_plataforma );
+}
+
 
 // Registro do Custom Post Type "Texto em Discussão"
 function dados_pessoais_post_types() {
@@ -122,10 +135,9 @@ function dados_pessoais_post_types() {
         'register_meta_box_cb' => 'dadospessoais_eixo_metaboxes'
     );
     register_post_type( 'eixo-de-debate', $args_eixo );
-
 }
-
 add_action( 'init', 'dados_pessoais_post_types', 10, 2);
+
 
 /**
  * Incluí novas cores no editor visual
@@ -201,6 +213,8 @@ function dadospessoais_cor_eixo_metabox() {
  * @return mixed
  */
 function dadospessoais_salvar_cor_meta($post_id, $post) {
+    print_r($_POST);
+    wp_die();
     if (!isset($_POST['cormeta_noncename'])) {
         return $post->ID;
     }
@@ -211,8 +225,9 @@ function dadospessoais_salvar_cor_meta($post_id, $post) {
     }
 
     // O usuário tem permissão de edição de página?
-    if ( !current_user_can( 'edit_page', $post->ID ))
+    if ( !current_user_can( 'edit_page', $post->ID )) {
         return $post->ID;
+    }
 
     $cor_eixo = $_POST['_cor_eixo'];
 
@@ -350,9 +365,64 @@ function dadospessoais_get_english_information_link() {
     return get_permalink($page_english);
 }
 
+
 /**
  * Obtem o objeto page do anteprojeto
  */
 function dadospessoais_get_anteprojeto_page() {
     return dadospessoais_get_by_slug('anteprojeto-de-lei-para-a-protecao-de-dados-pessoais', OBJECT, 'texto-em-debate');
 }
+
+
+/**
+ * Adicionando MetaBoxes na área de admin para gerenciar os PDFs enviados como contribuições
+ */
+add_action( 'add_meta_boxes', 'dadospessoais_exibicao_metabox' );
+function dadospessoais_exibicao_metabox()
+{
+  add_meta_box( 'contribuicoes-pdf', 'Contribuições em PDF', 'dadospessoais_contribuicoes_render', 'texto-em-debate', 'side', 'core' );
+}
+
+
+function dadospessoais_contribuicoes_render($post)
+{
+  $pdf_contribution_list = get_post_meta($post->ID, 'pdf_contribution_list', true);
+
+  $counter = 1;
+  foreach ($pdf_contribution_list as $key=> $pdf_contribution) {
+    ?>
+    <p id="delete_pdf_key_<?php echo $key; ?>">
+      <b>Contribuição <?php echo $counter; ?></b>
+      <input type="button" class="ed_button button button-small" onclick="deletar_pdf(<?php echo $key; ?>, <?php echo $post->ID; ?>)" value="Deletar"/><br/>
+      Autor:<br/>
+      <input type="text" value = "<?php echo $pdf_contribution['author']; ?>" id="autor_contribuicao_<?php echo $key ?>"/>
+      <input type="button" class="ed_button button button-small" value="OK" onclick="altera_autor_pdf(<?php echo $key; ?>, <?php echo $post->ID; ?>, jQuery('#autor_contribuicao_<?php echo $key; ?>').val())"></br>
+      <a href="<?php echo $pdf_contribution['pdf_url']; ?>">Contribuição</a>
+    </p>
+    <hr/>
+    <?php
+    $counter++;
+  }
+}
+
+
+
+function dadospessoais_remove_pdf_callback(){
+  $pdf_contribution_list = get_post_meta($_POST['post_ID'], 'pdf_contribution_list', true);
+  $base_upload_path = wp_upload_dir();
+
+  if (unlink($base_upload_path['basedir'] . explode($base_upload_path['baseurl'],$pdf_contribution_list[$_POST['chave']]['pdf_url'])[1])) {
+    unset($pdf_contribution_list[$_POST['chave']]);
+    update_post_meta($_POST['post_ID'],'pdf_contribution_list',$pdf_contribution_list);
+  } else {
+    return false;
+  }
+}
+add_action('wp_ajax_dadospessoais_remove_pdf', 'dadospessoais_remove_pdf_callback');
+
+function dadospessoais_altera_autor_pdf_callback(){
+  $pdf_contribution_list = get_post_meta($_POST['post_ID'], 'pdf_contribution_list', true);
+  $pdf_contribution_list[$_POST['chave']]['author'] = $_POST['novo_autor'];
+  update_post_meta($_POST['post_ID'],'pdf_contribution_list',$pdf_contribution_list);
+}
+add_action('wp_ajax_dadospessoais_altera_autor_pdf', 'dadospessoais_altera_autor_pdf_callback');
