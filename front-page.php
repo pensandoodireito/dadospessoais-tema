@@ -88,7 +88,7 @@
         <h3 class="titulo font-amatic white">Eixos</h3>
       </div>
       <div class="col-sm-6 col-sm-offset-4 white">
-        
+
         <ul class="eixos-home">
           <?php
           // Gera os modais de eixos
@@ -97,14 +97,14 @@
           while ($query_eixos->have_posts()) {
           $query_eixos->the_post();
           ?>
-          
+
           <li>
             <strong>
             <a href="<?php the_permalink(); ?>">
               <?php the_title(); ?>
             </a>
             </strong>
-            
+
           </li>
           <?php
           }
@@ -117,5 +117,5 @@
   </div>
 </div>
 <?php get_template_part('mini-tutorial'); ?>
-<?php get_template_part('noticias'); ?>
+<?php get_template_part('front','noticias'); ?>
 <?php get_footer(); ?>
