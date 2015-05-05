@@ -1,4 +1,9 @@
 function deletar_pdf(key, post_ID) {
+
+    if (!confirm("Deseja mesmo remover essa contribuição?")) {
+        return false;
+    }
+
     var loader = '<span id="loader-gif">Carregando mais notícias... <img src="' + dadosPessoais.ajaxgif + '"/></span>';
     jQuery("#delete_pdf_key_" + key).append(loader);
 
