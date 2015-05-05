@@ -408,15 +408,12 @@ function dadospessoais_contribuicoes_render($post)
 
 
 function dadospessoais_remove_pdf_callback(){
-  $pdf_contribution_list = get_post_meta($_POST['post_ID'], 'pdf_contribution_list', true);
-  $base_upload_path = wp_upload_dir();
+    $pdf_contribution_list = get_post_meta($_POST['post_ID'], 'pdf_contribution_list', true);
+    $base_upload_path = wp_upload_dir();
 
-  if (unlink($base_upload_path['basedir'] . explode($base_upload_path['baseurl'],$pdf_contribution_list[$_POST['chave']]['pdf_url'])[1])) {
+    unlink($base_upload_path['basedir'] . explode($base_upload_path['baseurl'],$pdf_contribution_list[$_POST['chave']]['pdf_url'])[1]);
     unset($pdf_contribution_list[$_POST['chave']]);
     update_post_meta($_POST['post_ID'],'pdf_contribution_list',$pdf_contribution_list);
-  } else {
-    return false;
-  }
 }
 add_action('wp_ajax_dadospessoais_remove_pdf', 'dadospessoais_remove_pdf_callback');
 
