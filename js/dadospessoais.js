@@ -119,6 +119,4 @@ jQuery(function ($) {
         $('.eixo .menu').slideToggle('slow');
         $(".fecha-menu-eixo .fa").toggleClass('fa-angle-up fa-angle-down');
     });
-    back_to_top($);
-
 });
