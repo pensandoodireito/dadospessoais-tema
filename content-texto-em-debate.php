@@ -9,26 +9,25 @@
 		<h4><strong><?php the_title(); ?></strong></h4>
 		<div class="commentable-container">
 			<?php the_content(); ?>
-			
+
 			<h4 class="divider-top red font-roboto mt-lg pt-lg">Contribuições em PDF</h4>
 			<!-- data-section-id iniciando em um valor alto para não conflitar com os comentários do texto -->
 			<?php
 			$pdf_contribution_list = get_post_meta(get_the_ID(), 'pdf_contribution_list', true);
 
 			$data_section = 10000;
-			
+
 			foreach ($pdf_contribution_list as $pdf_contribution) {
-			
+
 			?>
 			<p class="commentable-section" data-section-id="<?php echo $data_section; ?>">
-				<img alt="pdf" src="<?php echo get_stylesheet_directory_uri();?>/images/pdf-icon.png"/><strong><?php echo $pdf_contribution['author']; ?></strong>
-				<iframe id="pauta-pdf-content" style="width: 100%; min-height: 250px; max-height: 800px; height: 300px;" src="<?php echo $pdf_contribution['pdf_url']; ?>">
-				PDF
-				</iframe>
+				<img alt="pdf" src="<?php echo get_stylesheet_directory_uri();?>/images/pdf-icon.png"/><strong><?php echo $pdf_contribution['author']; ?></strong><br/>
+				<a href="<?php echo $pdf_contribution['pdf_url']; ?>">Clique para baixar a contribuição em PDF</a>
+        <br/>
 			</p>
 			<?php
 			$data_section++;
-			
+
 			} ?>
 		</div>
 		<div class="well">
