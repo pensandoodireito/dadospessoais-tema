@@ -15,7 +15,8 @@ if ( isset($_POST['file_nonce']) ) {
 
             $current_user = wp_get_current_user();
             $pdf_contribution_list[] = array( 'author' => $current_user->display_name,
-                                              'pdf_url' => $upload_dir['url'] . '/' . $file_name );
+              'pdf_url' => $upload_dir['url'] . '/' . $file_name,
+              'email' => $current_user->user_email );
 
             update_post_meta(get_the_ID(), 'pdf_contribution_list', $pdf_contribution_list);
         }

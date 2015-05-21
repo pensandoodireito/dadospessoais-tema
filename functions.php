@@ -383,7 +383,6 @@ function dadospessoais_exibicao_metabox()
   add_meta_box( 'contribuicoes-pdf', 'Contribuições em PDF', 'dadospessoais_contribuicoes_render', 'texto-em-debate', 'side', 'core' );
 }
 
-
 function dadospessoais_contribuicoes_render($post)
 {
   $pdf_contribution_list = get_post_meta($post->ID, 'pdf_contribution_list', true);
@@ -395,8 +394,10 @@ function dadospessoais_contribuicoes_render($post)
       <b>Contribuição <?php echo $counter; ?></b>
       <input type="button" class="ed_button button button-small" onclick="deletar_pdf(<?php echo $key; ?>, <?php echo $post->ID; ?>)" value="Deletar"/><br/>
       Autor:<br/>
-      <input type="text" value = "<?php echo $pdf_contribution['author']; ?>" id="autor_contribuicao_<?php echo $key ?>"/>
-      <input type="button" class="ed_button button button-small" value="OK" onclick="altera_autor_pdf(<?php echo $key; ?>, <?php echo $post->ID; ?>, jQuery('#autor_contribuicao_<?php echo $key; ?>').val())"></br>
+      <input type="text" value = "<?php echo $pdf_contribution['author']; ?>" id="autor_contribuicao_<?php echo $key ?>"/><br/>
+      Email:<br/>
+      <input type="email" value = "<?php echo $pdf_contribution['email']; ?>" id="email_contribuicao_<?php echo $key ?>"/>
+      <input type="button" class="ed_button button button-small" value="OK" onclick="altera_autor_pdf(<?php echo $key; ?>, <?php echo $post->ID; ?>, jQuery('#autor_contribuicao_<?php echo $key; ?>').val(), jQuery('#email_contribuicao_<?php echo $key; ?>').val())"></br>
       <a href="<?php echo $pdf_contribution['pdf_url']; ?>">Contribuição</a>
     </p>
     <hr/>
@@ -404,8 +405,6 @@ function dadospessoais_contribuicoes_render($post)
     $counter++;
   }
 }
-
-
 
 function dadospessoais_remove_pdf_callback(){
     $pdf_contribution_list = get_post_meta($_POST['post_ID'], 'pdf_contribution_list', true);
@@ -420,6 +419,7 @@ add_action('wp_ajax_dadospessoais_remove_pdf', 'dadospessoais_remove_pdf_callbac
 function dadospessoais_altera_autor_pdf_callback(){
   $pdf_contribution_list = get_post_meta($_POST['post_ID'], 'pdf_contribution_list', true);
   $pdf_contribution_list[$_POST['chave']]['author'] = $_POST['novo_autor'];
+  $pdf_contribution_list[$_POST['chave']]['email'] = $_POST['novo_email'];
   update_post_meta($_POST['post_ID'],'pdf_contribution_list',$pdf_contribution_list);
 }
 add_action('wp_ajax_dadospessoais_altera_autor_pdf', 'dadospessoais_altera_autor_pdf_callback');
