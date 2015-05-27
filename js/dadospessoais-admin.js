@@ -29,15 +29,16 @@ function deletar_pdf(key, post_ID) {
     return false;
 }
 
-function altera_autor_pdf(key, post_ID, novo_autor) {
-    var loader = '<span id="loader-gif">Carregando mais notícias... <img src="' + dadosPessoais.ajaxgif + '"/></span>';
+function altera_autor_pdf(key, post_ID, novo_autor, novo_email) {
+    var loader = '<span id="loader-gif">Atualizando dados de contribuição<img src="' + dadosPessoais.ajaxgif + '"/></span>';
     jQuery("#delete_pdf_key_" + key).append(loader);
 
     var data = {
         'action': 'dadospessoais_altera_autor_pdf',
         'chave': key,
         'post_ID': post_ID,
-        'novo_autor': novo_autor
+        'novo_autor': novo_autor,
+        'novo_email': novo_email
     }
 
     jQuery.ajax({
