@@ -213,8 +213,6 @@ function dadospessoais_cor_eixo_metabox() {
  * @return mixed
  */
 function dadospessoais_salvar_cor_meta($post_id, $post) {
-    print_r($_POST);
-    wp_die();
     if (!isset($_POST['cormeta_noncename'])) {
         return $post->ID;
     }
