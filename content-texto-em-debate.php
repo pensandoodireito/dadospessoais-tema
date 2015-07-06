@@ -25,26 +25,6 @@
 			<p class="md-lg pt-lg">
 			</p>
 		</div>
-		<div class="well">
-			<h5><strong>Envie sua contribuição em PDF</strong></h5>
-
-			<?php if (is_user_logged_in()) { ?>
-      <form method="POST" id="form-contribuicao-pdf" action="<?php echo $_SERVER['REQUEST_URI']; ?>#form-contribuicao-pdf" enctype="multipart/form-data">
-				<div class="row">
-					<div class="col-sm-8 mt-sm">
-            <input type="hidden" name="file_nonce" value="<?php echo wp_create_nonce('pdf-upload'); ?>" />
-						<input type="file" class="filestyle" data-buttonBefore="true" name="pdf_contribution" data-buttonText="Procurar arquivo..." value="">
-					</div>
-					<div class="col-sm-4 mt-sm">
-						<button type="submit"  class="btn btn-default">Enviar arquivo selecionado</button>
-					</div>
-				</div>
-			</form>
-			<?php } else { ?>
-			<strong>Você precisa estar logado no sistema para enviar uma contribuição. </strong>
-			<a href="<?php echo wp_login_url($_SERVER['REQUEST_URI']); ?>">Faça seu login</a> ou <a href="<?php echo wp_registration_url(); ?>">Cadastre-se</a>
-			<?php } ?>
-		</div>
 	</div>
 </div>
 <div class="back-to-top">
