@@ -31,12 +31,11 @@ if ( isset($_POST['file_nonce']) ) {
     </div>
     <?php
         // Start the Loop.
-        while ( have_posts() ) : the_post();
-
-            // Include the page content template.
-            get_template_part( 'content', 'texto-em-debate' );
-
-        endwhile;
+    while (have_posts()) :
+        the_post();
+        // Include the page content template.
+        get_template_part('content', 'texto-em-debate');
+    endwhile;
     ?>
 </div>
 <?php
