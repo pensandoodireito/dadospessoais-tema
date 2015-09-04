@@ -1,11 +1,5 @@
 <?php
 
-// Variável global dos eixos em discussão
-$cores_eixos_editor = '
-    "FF1212", "Vermelho A", "984444", "Vermelho B", "FF7112", "Laranja A", "FFA012",  "Laranja A", "986644", "Laranja B", "FFFF12", "Amarelo A", "987644", "Amarelo B", "988744", "Amarelo C", "B2E710", "Verde A", "0FD00F", "Verde B", "989844", "Verde C", "7C9040", "Verde D", "3C873C", "Verde E", "0F9FD0", "Azul A", "0F5FD0",  "Azul B", "2F0FD0", "Azul C", "3C7587", "Azul D", "3C5C87", "Azul E", "8F0FD0", "Violeta A", "493C87", "Violeta B", "6E3C87", "Violeta C", "DB0F86", "Rosa A", "8B3E6B", "Rosa B"
-';
-
-
 $cores_eixos_array = array( "#FF1212",
                             "#984444",
                             "#FF7112",
@@ -56,46 +50,8 @@ function dadospessoais_admin_scripts() {
 }
 
 
-// Registro do Custom Post Type "Texto em Discussão"
+// Registro do Custom Post Type "Texto de Debate"
 function dados_pessoais_post_types() {
-
-    $labels_texto = array(
-        'name'                => _x( 'Textos em debate', 'Textos em debate', 'dadospessoais' ),
-        'singular_name'       => _x( 'Texto em debate', 'Texto em debate', 'dadospessoais' ),
-        'menu_name'           => __( 'Textos em debate', 'dadospessoais' ),
-        'parent_item_colon'   => __( 'Texto pai:', 'dadospessoais' ),
-        'all_items'           => __( 'Todos os textos', 'dadospessoais' ),
-        'view_item'           => __( 'Ver texto', 'dadospessoais' ),
-        'add_new_item'        => __( 'Adicionar texto', 'dadospessoais' ),
-        'add_new'             => __( 'Novo', 'dadospessoais' ),
-        'edit_item'           => __( 'Editar texto', 'dadospessoais' ),
-        'update_item'         => __( 'Atualizar texto', 'dadospessoais' ),
-        'search_items'        => __( 'Procurar texto', 'dadospessoais' ),
-        'not_found'           => __( 'Não encontrado', 'dadospessoais' ),
-        'not_found_in_trash'  => __( 'Não encontrado na lixeira', 'dadospessoais' ),
-    );
-    $args_texto = array(
-        'label'               => __( 'Textos em debate', 'dadospessoais' ),
-        'description'         => __( 'Texto a ser posto em debate por parágrafo', 'dadospessoais' ),
-        'labels'              => $labels_texto,
-        'supports'            => array ('title', 'editor', 'author', 'excerpt', 'trackbacks', 'comments', 'revisions', 'page-attributes'),
-        'hierarchical'        => false,
-        'public'              => true,
-        'show_ui'             => true,
-        'show_in_menu'        => true,
-        'show_in_nav_menus'   => true,
-        'show_in_admin_bar'   => true,
-        'menu_position'       => 5,
-        'can_export'          => true,
-        'has_archive'         => true,
-        'exclude_from_search' => false,
-        'publicly_queryable'  => true,
-        'capability_type'     => 'page',
-        'rewrite'             => true,
-        'permalink_epmask' => 'EP_PERMALINK ',
-        'query_var' => true
-    );
-    register_post_type( 'texto-em-debate', $args_texto );
 
     $labels_eixo = array(
         'name'                => _x( 'Eixos de debate', 'Eixos de debate', 'dadospessoais' ),
@@ -137,30 +93,6 @@ function dados_pessoais_post_types() {
     register_post_type( 'eixo-de-debate', $args_eixo );
 }
 add_action( 'init', 'dados_pessoais_post_types', 10, 2);
-
-
-/**
- * Incluí novas cores no editor visual
- *
- * @param $init
- * @return mixed
- */
-function editor_visual_novas_cores( $init ) {
-
-    global $cores_eixos_editor;
-
-    if (get_post_type() ==  "texto-em-debate") {
-
-        $init['textcolor_map'] = '[' . $cores_eixos_editor .']'; // build colour grid default+custom colors
-        $init['textcolor_rows'] = 3; // enable 6th row for custom colours in grid
-        return $init;
-    } else {
-        return $init;
-    }
-
-
-}
-add_filter('tiny_mce_before_init', 'editor_visual_novas_cores');
 
 /**
  * Inclusão de metaboxes para os eixos
@@ -233,23 +165,6 @@ function dadospessoais_salvar_cor_meta($post_id, $post) {
 }
 
 add_action('save_post', 'dadospessoais_salvar_cor_meta', 1, 2); // save the custom fields
-
-
-add_action('the_content', 'dadospessoais_parse_headers');
-
-function dadospessoais_parse_headers($content) {
-    if(get_post_type() == "texto-em-debate") {
-        return preg_replace_callback('/(<h([1-6]{1})([^>]*)>)(.*)<\/h\2>/msuU', 'dadospessoais_parse_head', $content);
-    } else {
-        return $content;
-    }
-}
-
-function dadospessoais_parse_head($matches) {
-
-    return "<h{$matches[2]} {$matches[3]} id='" . str_replace('--','-', str_replace('8211','', dadospessoais_slugfy($matches[4]))) . "'>{$matches[4]}</h{$matches[2]}>";
-
-}
 
 /**
  * Obtem o índice (table of contents) de um conteúdo html passado
