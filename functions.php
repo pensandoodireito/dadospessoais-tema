@@ -299,7 +299,7 @@ function dadospessoais_exibicao_metabox()
 function dadospessoais_contribuicoes_render($post)
 {
   $pdf_contribution_list = get_post_meta($post->ID, 'pdf_contribution_list', true);
-
+  if ($pdf_contribution_list) {
   $counter = 1;
   foreach ($pdf_contribution_list as $key=> $pdf_contribution) {
     ?>
@@ -316,6 +316,7 @@ function dadospessoais_contribuicoes_render($post)
     <hr/>
     <?php
     $counter++;
+  }
   }
 }
 
