@@ -299,7 +299,7 @@ function dadospessoais_exibicao_metabox()
 function dadospessoais_contribuicoes_render($post)
 {
   $pdf_contribution_list = get_post_meta($post->ID, 'pdf_contribution_list', true);
-
+  if ($pdf_contribution_list) {
   $counter = 1;
   foreach ($pdf_contribution_list as $key=> $pdf_contribution) {
     ?>
@@ -309,13 +309,14 @@ function dadospessoais_contribuicoes_render($post)
       Autor:<br/>
       <input type="text" value = "<?php echo $pdf_contribution['author']; ?>" id="autor_contribuicao_<?php echo $key ?>"/><br/>
       Email:<br/>
-      <input type="email" value = "<?php echo $pdf_contribution['email']; ?>" id="email_contribuicao_<?php echo $key ?>"/>
+      <input type="email" value = "<?php echo isset($pdf_contribution['email'])?$pdf_contribution['email']:''; ?>" id="email_contribuicao_<?php echo $key ?>"/>
       <input type="button" class="ed_button button button-small" value="OK" onclick="altera_autor_pdf(<?php echo $key; ?>, <?php echo $post->ID; ?>, jQuery('#autor_contribuicao_<?php echo $key; ?>').val(), jQuery('#email_contribuicao_<?php echo $key; ?>').val())"></br>
       <a href="<?php echo $pdf_contribution['pdf_url']; ?>">Contribuição</a>
     </p>
     <hr/>
     <?php
     $counter++;
+  }
   }
 }
 
@@ -336,3 +337,14 @@ function dadospessoais_altera_autor_pdf_callback(){
   update_post_meta($_POST['post_ID'],'pdf_contribution_list',$pdf_contribution_list);
 }
 add_action('wp_ajax_dadospessoais_altera_autor_pdf', 'dadospessoais_altera_autor_pdf_callback');
+
+// Get the proper template for post type texto-em-debate in this theme
+function get_texto_em_debate_template($single_template)
+{
+    global $post;
+    if ($post->post_type == 'texto-em-debate') {
+        $single_template = plugin_dir_path(__FILE__) . 'single-texto-em-debate.php';
+    }
+    return $single_template;
+}
+add_filter('single_template', 'get_texto_em_debate_template', 11);
