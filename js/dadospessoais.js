@@ -34,26 +34,26 @@ jQuery(function ($) {
         require.register("side-comments/templates/section.html", function (exports, require, module) {
 
             module.exports = '<div class="side-comment <%= sectionClasses %>">\n  ' +
-            '                           <a href="#" class="marker">\n    <span><%= comments.length %></span>\n  </a>\n  \n  ' +
-            '                   <div class="comments-wrapper">\n    ' +
-            '                       <i class="fa fa-times" onClick="document.body.click();"></i>' +
-            '                   <ul class="comments" data-root-id="0">\n      ' +
-            '                           <% _.each(comments, function( comment ){ %>\n        ' +
-            '                               <%= _.template(commentTemplate, { comment: comment, currentUser: currentUser }) %>\n      ' +
-            '                           <% }) %>\n    ' +
-            '                   </ul>\n    \n    ' +
-            '                   </div>\n' +
-            '                       </div>';
+                '                           <a href="#" class="marker">\n    <span><%= comments.length %></span>\n  </a>\n  \n  ' +
+                '                   <div class="comments-wrapper">\n    ' +
+                '                       <i class="fa fa-times" onClick="document.body.click();"></i>' +
+                '                   <ul class="comments" data-root-id="0">\n      ' +
+                '                           <% _.each(comments, function( comment ){ %>\n        ' +
+                '                               <%= _.template(commentTemplate, { comment: comment, currentUser: currentUser }) %>\n      ' +
+                '                           <% }) %>\n    ' +
+                '                   </ul>\n    \n    ' +
+                '                   </div>\n' +
+                '                       </div>';
         });
 
         require.register("side-comments/templates/comment.html", function (exports, require, module) {
             module.exports = '<li data-comment-id="<%= comment.commentID %>" data-parent-id="<%= comment.parentID%>">\n  ' +
-            '                   <div class="author-avatar">\n  ' +
-            '                       <img src="<%= comment.authorAvatarUrl %>">\n  ' +
-            '                   </div>\n  ' +
-            '                       <p class="author-name right-of-avatar">\n    <%= comment.authorName %>\n  </p>\n  ' +
-            '                       <p class="comment right-of-avatar">\n    <%= comment.comment %>\n  </p>\n  ' + 
-            '                   </li>';
+                '                   <div class="author-avatar">\n  ' +
+                '                       <img src="<%= comment.authorAvatarUrl %>">\n  ' +
+                '                   </div>\n  ' +
+                '                       <p class="author-name right-of-avatar">\n    <%= comment.authorName %>\n  </p>\n  ' +
+                '                       <p class="comment right-of-avatar">\n    <%= comment.comment %>\n  </p>\n  ' +
+                '                   </li>';
         });
     }
 });
@@ -64,13 +64,13 @@ jQuery(function ($) {
     sticky_relocate();
 
     // botão que fecha o menu indice
-    $('.fecha-menu-indice').click(function() {
+    $('.fecha-menu-indice').click(function () {
         $('.indice .menu').slideToggle('slow');
         $(".fecha-menu-indice .fa").toggleClass('fa-angle-up fa-angle-down');
     });
 
 // botão que fecha o menu eixos
-    $('.fecha-menu-eixo').click(function() {
+    $('.fecha-menu-eixo').click(function () {
         $('.eixo .menu').slideToggle('slow');
         $(".fecha-menu-eixo .fa").toggleClass('fa-angle-up fa-angle-down');
     });
