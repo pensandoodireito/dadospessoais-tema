@@ -21,7 +21,7 @@ function deletar_pdf(key, post_ID) {
             jQuery('#loader-gif').remove();
             jQuery("#delete_pdf_key_" + key).remove();
         },
-        error: function(){
+        error: function () {
             alert("Erro ao deletar arquivo");
         }
     });
@@ -48,7 +48,7 @@ function altera_autor_pdf(key, post_ID, novo_autor, novo_email) {
         success: function (html) {
             jQuery('#loader-gif').remove();
         },
-        error: function(){
+        error: function () {
             alert("Erro ao modificar autor");
         }
     });
